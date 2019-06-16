@@ -6,33 +6,200 @@ Comprehension Questions
 {% endblock %}
 
 {% block content %}
-‍‍<select name="myselect" id="myselect">
-
-    <option value="a">选项一</option>
-
-    <option value="b">选项二</option>
-
+1.What is the chance that a block will continue after a period? <br>
+<select name="q1" id="q1">
+    <option value="O">---</option>
+    <option value="A">1 in 4</option>
+    <option value="B">2 in 4</option>
+    <option value="C">3 in 4</option>
+    <option value="D">4 in 4</option>
 </select>
+<br>
+<span class="message" id="q1_1">Try again</span>
+<span class="message" id="q1_2">You are correct!</span>
+<br>
+2.What is the chance that a block will end after a period?<br>
+<select name="q2" id="q2">
+    <option value="O">---</option>
+    <option value="A">1 in 4</option>
+    <option value="B">2 in 4</option>
+    <option value="C">3 in 4</option>
+    <option value="D">4 in 4</option>
+</select>
+<br>
+<span class="message" id="q2_1">Try again</span>
+<span class="message" id="q2_2">You are correct!</span>
+<br>
+3.Will you be in the same group of players in all blocks?<br>
+<select name="q3" id="q3">
+    <option value="O">---</option>
+    <option value="A">Yes</option>
+    <option value="B">No</option>
+    <option value="C">I’m not sure</option>
+</select>
+<br>
+<span class="message" id="q3_1">Try again</span>
+<span class="message" id="q3_2">You are correct! Groups will be reshuffled before each block.</span>
+<br>
+4.Will you play as the Firm in all blocks?<br>
+<select name="q4" id="q4">
+    <option value="O">---</option>
+    <option value="A">Yes</option>
+    <option value="B">No</option>
+    <option value="C">I’m not sure</option>
+</select>
+<br>
+<span class="message" id="q4_1">Try again</span>
+<span class="message" id="q4_2">You are correct! Player roles will be reshuffled before each block.</span>
+<br>
+5.If you are in the Firm group, will you meet the same player from the Investor group twice if a block contains 8 periods?<br>
+<select name="q5" id="q5">
+    <option value="O">---</option>
+    <option value="A">Yes</option>
+    <option value="B">No</option>
+    <option value="C">I’m not sure</option>
+</select>
+<br>
+<span class="message" id="q5_1">Try again</span>
+<span class="message" id="q5_2">You are correct! Player roles will be reshuffled before each block.</span>
+<br>
+6.If you play as the Firm in one period, and the virtual die shows 6, how can you get a GOOD certificate?
+<select name="q6" id="q6">
+    <option value="O">---</option>
+    <option value="A">By choosing High only</option>
+    <option value="B">By choosing Low only</option>
+    <option value="C">By choosing either High or Low</option>
+</select>
+<br>
+<span class="message" id="q6_1">Try again</span>
+<span class="message" id="q6_2">You are correct! If the virtual die shows 5 or 6, you can get a GOOD certificate only if you choose High. Choosing Low will lead to a BAD certificate that remains for the rest of the block.</span>
+<br>
+
+7.If you play as the Firm in one period, and the virtual die shows 3, how can you get a GOOD certificate?
+<select name="q7" id="q7">
+    <option value="O">---</option>
+    <option value="A">By choosing High only</option>
+    <option value="B">By choosing Low only</option>
+    <option value="C">By choosing either High or Low</option>
+</select>
+<br>
+<span class="message" id="q7_1">Try again</span>
+<span class="message" id="q7_2">You are correct! If the die shows 1, 2, 3 or 4, then no matter what you choose, you will get a GOOD certificate.</span>
+<br>
+
+8.If you play as the Investor in one period, and you are paired with a Firm with BAD certificate, what does that mean?
+<select name="q8" id="q8">
+    <option value="O">---</option>
+    <option value="A">The Firm violated the rule last period in this block.</option>
+    <option value="B">The Firm violated the rule at most 2 periods ago in this block.</option>
+    <option value="C">The Firm violated the rule at most 3 periods ago in this block.</option>
+    <option value="D">The Firm violated the rule in some previous period in this block.</option>
+    <option value="E">The Firm violated the rule in some previous period in the previous block.</option>
+</select>
+<br>
+<span class="message" id="q8_1">Try again</span>
+<span class="message" id="q8_2">You are correct! A BAD certificate will remain for all the rest of the periods within the same block. But the BAD certificate will not carry over to the next block.</span>
+<br>
 
 
-<p>
-    Make sure you answer these questions carefully. You can only start the game once you’ve answered all questions correctly.
-</p>
-
-{% next_button %}
+<button id='next' class="otree-btn-next btn btn-primary next-button otree-next-button" disabled>Next</button>
 
 
-{% endblock %}
 
-<scirpt type="text/javascript">
-    $("#myselect").change(function(){
-        var opt=$("#myselect").val();
-        alert('selected!');
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#q1').change(function(){
+            var selected = $(this).val();
+            if(selected == 'C'){
+                $('#q1_2').show();
+                $('#q1_1').hide();
+            }else{
+                $('#q1_1').show();
+                $('#q1_2').hide();
+            }
+        });
+        $('#q2').change(function(){
+            var selected = $(this).val();
+            if(selected == 'A'){
+                $('#q2_2').show();
+                $('#q2_1').hide();
+            }else{
+                $('#q2_1').show();
+                $('#q2_2').hide();
+            }
+        });
+        $('#q3').change(function(){
+            var selected = $(this).val();
+            if(selected == 'B'){
+                $('#q3_2').show();
+                $('#q3_1').hide();
+            }else{
+                $('#q3_1').show();
+                $('#q3_2').hide();
+            }
+        });
+        $('#q4').change(function(){
+            var selected = $(this).val();
+            if(selected == 'B'){
+                $('#q4_2').show();
+                $('#q4_1').hide();
+            }else{
+                $('#q4_1').show();
+                $('#q4_2').hide();
+            }
+        });
+        $('#q5').change(function(){
+            var selected = $(this).val();
+            if(selected == 'B'){
+                $('#q5_2').show();
+                $('#q5_1').hide();
+            }else{
+                $('#q5_1').show();
+                $('#q5_2').hide();
+            }
+        });
+        $('#q6').change(function(){
+            var selected = $(this).val();
+            if(selected == 'A'){
+                $('#q6_2').show();
+                $('#q6_1').hide();
+            }else{
+                $('#q6_1').show();
+                $('#q6_2').hide();
+            }
+        });
+        $('#q7').change(function(){
+            var selected = $(this).val();
+            if(selected == 'C'){
+                $('#q7_2').show();
+                $('#q7_1').hide();
+            }else{
+                $('#q7_1').show();
+                $('#q7_2').hide();
+            }
+        });
+        $('#q8').change(function(){
+            var selected = $(this).val();
+            if(selected == 'D'){
+                $('#q8_2').show();
+                $('#q8_1').hide();
+                $('#next').prop('disabled', false);
+
+            }else{
+                $('#q8_1').show();
+                $('#q8_2').hide();
+                $('#next').prop('disabled', true);
+            }
+        });
+
     });
-    <!--function gradeChange(){-->
-        <!--var objS = document.getElementById("pid");-->
-        <!--var grade = objS.options[objS.selectedIndex].grade;-->
-        <!--alert('grade');-->
-       <!--}-->
-
-</scirpt>
+</script>
+<style>
+    .message {
+        display:none;
+        color:red;
+    }
+</style>
+{% endblock %}

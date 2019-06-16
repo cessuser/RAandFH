@@ -6,7 +6,7 @@ from os import environ
 # e.g. self.session.config['participation_fee']
 
 SESSION_CONFIG_DEFAULTS = {
-    'real_world_currency_per_point': 1.00,
+    'real_world_currency_per_point': 0.1,
     'participation_fee': 4.00,
     'doc': "",
 }
@@ -17,15 +17,22 @@ SESSION_CONFIGS = [
         'display_name': "RA",
         'num_demo_participants': 16,
         'trt': 'RA',
-       'app_sequence': ['Game'],
+       'app_sequence': ['instructions','Game'],
     },
     {
         'name': 'FH',
         'display_name': "FH",
-        'num_demo_participants': 4,
+        'num_demo_participants': 16,
         'trt': 'FH',
-       'app_sequence': ['Game'],
+       'app_sequence': ['instructions','Game'],
     },
+    # {
+    #     'name': 'comprehension',
+    #     'display_name': "comprehension",
+    #     'num_demo_participants': 1,
+    #     'trt': 'FH',
+    #     'app_sequence': ['instructions']
+    # }
 ]
 
 

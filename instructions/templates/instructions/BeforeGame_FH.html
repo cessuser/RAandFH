@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Before the Game Starts in Each Period
+{% endblock %}
+
+{% block content %}
+<p>
+    Before the game starts in each period, the Firm will have the opportunity to roll a virtual die on the computer, which generates a random number from 1 to 6. <br>
+    The die roll does not serve for any purpose. The Firm just roll the die and see the number. And of course there is no certificate for the Investor to see. However, in the beginning of each period t>1, the Investor is told about the matched Firm’s past choices within the same Block. For example: The Firm you are matched with now chose 3 High and 1 Low in the past periods in this block.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

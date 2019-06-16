@@ -3,7 +3,7 @@ from otree.api import (
     Currency as c, currency_range
 )
 import random
-
+import math
 author = 'Danlin Chen'
 
 doc = """
@@ -23,11 +23,18 @@ class Subsession(BaseSubsession):
     if_continue = models.BooleanField()
 
     def creating_session(self):
+        if self.round_number == 1:
+            self.session.vars['history_firms'] = [0 for i in range(0, Constants.num_blk)]
         if self.round_number % Constants.one_blk_len == 1:
             player_lst = [i for i in range(1,int(len(self.get_players()))+1)]
             random.shuffle(player_lst)
             self.session.vars['firms'] = player_lst[0:int(len(player_lst)/2)]
             self.session.vars['investors'] = player_lst[int(len(player_lst)/2):]
+            cur_blk = math.floor((self.round_number - 1)/Constants.one_blk_len)
+            self.session.vars['history_firms'][cur_blk] = self.session.vars['firms']
+            print('firms ', self.session.vars['firms'])
+            print('investors ', self.session.vars['investors'])
+
 
         mtx = []
         assert(len(self.session.vars['firms']) == len(self.session.vars['investors']))
@@ -35,7 +42,7 @@ class Subsession(BaseSubsession):
             mtx.append([self.session.vars['firms'][i], self.session.vars['investors'][i]])
         self.set_group_matrix(mtx)
         self.session.vars['investors'] = self.session.vars['investors'][1:] + self.session.vars['investors'][0:1]
-        # print('round number: ', self.round_number, ' groups: ', self.get_group_matrix())
+        print('round number: ', self.round_number, ' groups: ', self.get_group_matrix())
 
     def set_if_continue(self):
         if self.round_number % Constants.one_blk_len == 1:
@@ -43,10 +50,13 @@ class Subsession(BaseSubsession):
         else:
             random_num = [1,2,3,4]
             random.shuffle(random_num)
-            if random_num[0] != 4:
+            if self.round_number % Constants.one_blk_len == 0:
                 self.if_continue = False
             else:
-                self.if_continue = True
+                if random_num[0] == 4:
+                    self.if_continue = False
+                else:
+                    self.if_continue = True
 
 
 class Group(BaseGroup):
@@ -108,7 +118,8 @@ class Player(BasePlayer):
     Low_num = models.IntegerField()
 
     def role(self):
-        if self.id_in_subsession in self.session.vars['firms']:
+        cur_firms = self.session.vars['history_firms'][math.floor((self.round_number-1)/Constants.one_blk_len)]
+        if self.id_in_subsession in cur_firms:
             return 'Firm'
         else:
             return 'Investor'

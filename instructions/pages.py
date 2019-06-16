@@ -21,15 +21,37 @@ class Matching(Page):
 
 
 class Game(Page):
-    pass
+    def vars_for_template(self):
+        high_in = '2, 2'
+        high_not = '0, 1'
+        low_in = '4, 0'
+        low_not = '1, 1'
+        if self.session.vars['RA']:
+            high_in = '1, 1'
+            high_not = '-1, 0'
+            low_in = '3, -1'
+            low_not = '0, 0'
+
+        return{
+            'high_inv': high_in,
+            'high_not': high_not,
+            'low_in': low_in,
+            'low_not': low_not
+        }
 
 
 class Certificates(Page):
-    pass
+    def is_displayed(self):
+        return self.session.config['trt'] == 'RA'
 
 
 class BeforeGame(Page):
-    pass
+    def is_displayed(self):
+        return self.session.config['trt'] == 'RA'
+
+class BeforeGame_FH(Page):
+    def is_displayed(self):
+        return self.session.config['trt'] == 'FH'
 
 
 class AfterGame(Page):
@@ -37,53 +59,17 @@ class AfterGame(Page):
 
 
 class Comprehension(Page):
-    # form_fields = ['q1','q2','q3','q4','q5','q6','q7','q8']
-    # form_fields = ['q1']
-    form_model = models.Player
-
-    def q1_error_message(self, value):
-        if value != 'C':
-            return 'Try again.'
-
-    # def q2_error_message(self, value):
-    #     if value != 'A':
-    #         return 'Try again.'
-    #
-    # def q3_error_message(self, value):
-    #     if value != 'B':
-    #         return 'Try again.'
-    #
-    # def q4_error_message(self, value):
-    #     if value != 'B':
-    #         return 'Try again.'
-    #
-    # def q5_error_message(self, value):
-    #     if value != 'B':
-    #         return 'Try again.'
-    #
-    # def q6_error_message(self, value):
-    #     if value != 'A':
-    #         return 'Try again.'
-    #
-    # def q7_error_message(self, value):
-    #     if value != 'C':
-    #         return 'Try again.'
-    #
-    # def q8_error_message(self, value):
-    #     if value != 'D':
-    #         return 'Try again.'
-
-    def vars_for_template(self):
-        pass
+    pass
 
 page_sequence = [
-    # GeneralInfo,
-    # Blocks,
-    # Periods,
-    # Matching,
-    # Game,
-    # Certificates,
-    # BeforeGame,
-    # AfterGame,
+    GeneralInfo,
+    Blocks,
+    Periods,
+    Matching,
+    Game,
+    Certificates,
+    BeforeGame,
+    BeforeGame_FH,
+    AfterGame,
     Comprehension
 ]
