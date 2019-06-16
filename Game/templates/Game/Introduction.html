@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block content %}
+<p>
+    This is Period {{ period }}. You are randomly matched with a new {{ match_role }}.
+</p>
+    {% next_button %}
+
+{% endblock %}

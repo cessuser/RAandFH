@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    End of Experiment
+{% endblock %}
+
+{% block content %}
+<p>
+    This is the end of the experiment. <br>
+    Block {{ chosen_blk }} is randomly chosen to determine your payments. <br>
+    Your total payoffs from this block are {{ blk_real_pay }}. <br>
+    Your show-up fee is £4.00. <br>
+    Your total earnings from this experiment are £{{ total_real_pay }}. <br>
+    Please remain seated and an experimenter will pay you in private.
+</p>
+    {% next_button %}
+
+{% endblock %}

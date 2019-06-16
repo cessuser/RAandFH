@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+After the Game Ends in Each Period
+{% endblock %}
+
+{% block content %}
+<p>
+    After the game ends in each period, the computer will randomly determine whether the current block ends or continues into the next period. Players will not see payoffs immediately after each period. Payoffs will only be announced after all blocks are finished.
+</p>
+<p>
+    Next you will answer some Comprehension Questions to test your understanding.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<p>
+    {{ msg }}
+</p>
+{% formfields %}
+
+    {% next_button %}
+
+{% endblock %}

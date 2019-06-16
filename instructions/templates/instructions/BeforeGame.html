@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Before the Game Starts in Each Period
+{% endblock %}
+
+{% block content %}
+<p>
+    Before the game starts in each period, the Firm will have the opportunity to roll a virtual die on the computer, which generates a random number from 1 to 6.
+<br>
+    1)If the number on the die is 5 or 6, then in that period the Firm will receive a GOOD certificate only if s/he chooses High in that period, otherwise the Firm will receive a BAD certificate.
+    <br>
+    2)If the number on the die is 1, 2, 3 or 4, then the Firm will receive a GOOD certificate regardless of what s/he chooses in that period.
+<br>
+    Once the Firm receives a BAD certificate, the BAD certificate will remain for the rest of the periods in the same block.
+<br><br>
+
+    If you are the Firm, then …
+<table border="1" cellpadding="20px">
+<tr>
+  <td>Virtual Die</td>
+  <td colspan="2">Certificates</td>
+</tr>
+<tr>
+    <td>5,6</td>
+    <td>GOOD if you choose High</td>
+    <td>BAD if you choose Low</td>
+</tr>
+    <tr>
+        <td>1,2,3</td>
+        <td>GOOD no matter what</td>
+        <td></td>
+</tr>
+</table>
+<br><br>
+If you are the Investor, then …
+<table border="1" cellpadding="20px">
+    <tr>
+        <td>Seeing a firm with certificate</td>
+        <td>Meaning</td>
+    </tr>
+    <tr>
+        <td>GOOD</td>
+        <td>The Firm has been complying with the above rule so far in the current block.</td>
+    </tr>
+    <tr>
+        <td>BAD</td>
+        <td>The Firm violated the rule in some previous period in the current block.</td>
+    </tr>
+</table>
+<br>
+Before the game starts in each period, starting in period 2, the Investor will receive a message telling them whether the Firm has a GOOD or BAD certificate so far in the current block.
+</p>
+
+    {% next_button %}
+
+{% endblock %}

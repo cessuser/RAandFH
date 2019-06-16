@@ -1,0 +1,16 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    This is the beginning of a new block.
+{% endblock %}
+
+{% block content %}
+<p>
+You are randomly assigned to a new group of {{ half_subjects }} players.<br>
+Players’ roles are reassigned.<br>
+Your role in this block is the {{ role }}.
+</p>
+    {% next_button %}
+
+{% endblock %}

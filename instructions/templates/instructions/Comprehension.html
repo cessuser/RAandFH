@@ -1,0 +1,38 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Comprehension Questions
+{% endblock %}
+
+{% block content %}
+‍‍<select name="myselect" id="myselect">
+
+    <option value="a">选项一</option>
+
+    <option value="b">选项二</option>
+
+</select>
+
+
+<p>
+    Make sure you answer these questions carefully. You can only start the game once you’ve answered all questions correctly.
+</p>
+
+{% next_button %}
+
+
+{% endblock %}
+
+<scirpt type="text/javascript">
+    $("#myselect").change(function(){
+        var opt=$("#myselect").val();
+        alert('selected!');
+    });
+    <!--function gradeChange(){-->
+        <!--var objS = document.getElementById("pid");-->
+        <!--var grade = objS.options[objS.selectedIndex].grade;-->
+        <!--alert('grade');-->
+       <!--}-->
+
+</scirpt>

@@ -1,0 +1,51 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+The Game
+{% endblock %}
+
+{% block content %}
+<p>
+    In every period, each pair of players will play the following game. The Firm can choose between High and Low levels of level of technology; the Investor can choose between Invest and Not Invest in the Firm. Both players choose simultaneously, without knowing the other player’s choice. Payoffs depend on both players’ choices according to the following table. Namely:
+</p>
+<p>
+    1)If the Firm chooses High tech and the Investor invests, both players will benefit by gaining 2 ECUs;
+<br><br>
+    2)If the Firm chooses High tech but the Investor does not invest, the Firm cannot gain anything, and the Investor keeps the money and gains 1 ECU;
+    <br><br>
+    3)If the Firm chooses Low tech and the Investor invests, the Firm will gain 4 ECUs, but the Investor loses all the money and gets 0 ECU;
+    <br><br>
+    4)If the Firm chooses Low tech and the Investor does not invest, then both the Firm and the Investor keeps 1 ECU.
+</p>
+<table border="1" cellpadding="20px">
+    <tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td colspan="2">Investor</td>
+
+        </tr>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Invest</th>
+            <th>Not   </th>
+        </tr>
+        <tr>
+            <td rowspan="2">Firm</td>
+            <td>High</td>
+            <td>2,2</td>
+            <td>0,1</td>
+        </tr>
+        <tr>
+            <td>Low</td>
+            <td>4,0</td>
+            <td>1,1</td>
+        </tr>
+    </tr>
+</table>
+<br>
+    {% next_button %}
+
+{% endblock %}

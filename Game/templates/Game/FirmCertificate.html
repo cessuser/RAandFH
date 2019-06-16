@@ -1,0 +1,13 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block content %}
+<p>
+    The Firm you are matched with in this period has a {{ last_certificate }} certificate.
+</p>
+    {% next_button %}
+
+{% endblock %}

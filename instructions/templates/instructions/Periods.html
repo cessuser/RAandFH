@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Periods
+{% endblock %}
+
+{% block content %}
+<p>
+    The game will be played repeatedly for several periods within each block. The number of periods in each block is determined in the following way. After each period, the computer will randomly pick a number from 1, 2, 3 and 4 with equal chance. If the number is 4, the current block will end, and a new block will start. And if the number is 1, 2 or 3, the current block will continue into the next period, and the block will end when 4 is picked after a period. In other words, after each period there is a 1 in 4 chance that the block will end, and a 3 in 4 chance that the block will continue. This is the same across all periods.
+
+</p>
+    {% next_button %}
+
+{% endblock %}

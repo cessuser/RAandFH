@@ -1,0 +1,14 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    This is the end of a block.
+{% endblock %}
+
+{% block content %}
+<p>
+    Click Next to start a new block.
+</p>
+    {% next_button %}
+
+{% endblock %}

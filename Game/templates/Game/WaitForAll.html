@@ -1,0 +1,12 @@
+{% extends 'otree/WaitPage.html' %}
+{% load otree %}
+{% block title %}{{ title_text }}{% endblock %}
+{% block content %}
+    {{ body_text }}
+    {% if player.round_number == 1 %}
+            Please wait for other players to enter current block.
+    {% if player.round_number in [2] %}
+                Please wait for other players to finish their current block.
+    {% endif %}
+        Please wait for other players to finish their current period.
+{% endblock %}

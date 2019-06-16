@@ -1,0 +1,15 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Matching
+{% endblock %}
+
+{% block content %}
+<p>
+    In the beginning of each period, a participant from the Firm group will be randomly paired with a participant from the Investor group to play the game. The matching is completely random and participants’ identities will not be revealed. The random matching will ensure that you will not meet the same person more than once within the same block if the number of periods in that block is less than 11. There is a small chance that the number of period will exceed 11 in a block, in which case matching is still random and you still won’t know whom you are paired with.
+
+</p>
+    {% next_button %}
+
+{% endblock %}
